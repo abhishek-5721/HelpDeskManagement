@@ -1,4 +1,5 @@
 using HelpDesk.Api.Models;
+using HelpDesk.Api.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace HelpDesk.Api
@@ -13,7 +14,9 @@ namespace HelpDesk.Api
             var connectionString = builder.Configuration.GetConnectionString("TicketConnection");
             builder.Services.AddDbContext<TicketDbContext>(
                 options => options.UseSqlServer(connectionString)
-                );
+            );
+
+            builder.Services.AddScoped<ITicketRepository, TicketRepository>();
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
