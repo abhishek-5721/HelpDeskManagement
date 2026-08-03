@@ -1,3 +1,5 @@
+using HelpDesk.Mvc.Services;
+
 namespace HelpDesk.Mvc
 {
     public class Program
@@ -7,6 +9,12 @@ namespace HelpDesk.Mvc
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddControllersWithViews();
+
+            builder.Services.AddHttpClient<TicketService>(
+                c => c.BaseAddress = new Uri("https://localhost:44304/Ticket/")
+            );
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
