@@ -3,4 +3,5 @@
     <File Path=".gitignore" />
   </Folder>
   <Project Path="HelpDesk.Api/HelpDesk.Api.csproj" />
+  <Project Path="HelpDesk.Mvc/HelpDesk.Mvc.csproj" Id="fb26196c-5416-446c-95ea-ee72f3ba9741" />
 </Solution>
