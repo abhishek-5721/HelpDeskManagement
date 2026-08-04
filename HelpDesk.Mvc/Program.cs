@@ -12,7 +12,7 @@ namespace HelpDesk.Mvc
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddHttpClient<TicketService>(
-                c => c.BaseAddress = new Uri("https://localhost:44304/Ticket/")
+                c => c.BaseAddress = new Uri("https://localhost:44304/api/Ticket/")
             );
 
             builder.Services.AddControllersWithViews();

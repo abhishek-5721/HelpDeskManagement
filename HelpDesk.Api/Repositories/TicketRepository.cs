@@ -21,9 +21,11 @@ namespace HelpDesk.Api.Repositories
         {
             var ticket = await context.Tickets.FindAsync(id);
 
-            context.Tickets.Remove(ticket);
-
-            await context.SaveChangesAsync();
+            if (ticket != null)
+            {
+                context.Tickets.Remove(ticket);
+                await context.SaveChangesAsync();
+            }
         }
 
         public async Task<List<Ticket>> GetAllTicketsAsync()
@@ -34,15 +36,7 @@ namespace HelpDesk.Api.Repositories
 
         public async Task<Ticket?> GetTicketByIdAsync(int id)
         {
-            var ticket = await context.Tickets.FindAsync(id);
-
-            if (ticket != null)
-            {
-                context.Tickets.Remove(ticket);
-                await context.SaveChangesAsync();
-            }
-
-            return ticket;
+            return await context.Tickets.FindAsync(id);
         }
 
         public async Task<List<Ticket>> GetTicketsByStatusAsync(string status)

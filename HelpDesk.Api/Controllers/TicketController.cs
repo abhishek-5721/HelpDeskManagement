@@ -11,7 +11,7 @@ namespace HelpDesk.Api.Controllers
     {
         ITicketRepository repo;
 
-        public TicketController()
+        public TicketController(ITicketRepository repo)
         {
             this.repo = repo;
         }
@@ -26,7 +26,7 @@ namespace HelpDesk.Api.Controllers
 
         // For getting ticket  by id
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProductById(int id) 
+        public async Task<IActionResult> GetTicketById(int id) 
         {
             var ticket = await  repo.GetTicketByIdAsync(id);
 
@@ -49,13 +49,17 @@ namespace HelpDesk.Api.Controllers
 
             int id = await repo.CreateTicketAsync(ticket);
 
-            return Ok("Product created with Id = " + id);
+            return Ok("Ticket created with Id = " + id);
         }
 
         // To update an existing ticket
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTicket(Ticket ticket) 
+        public async Task<IActionResult> UpdateTicket(int id, Ticket ticket) 
         {
+            if (id != ticket.Id)
+            {
+                return BadRequest();
+            }
             await repo.UpdateTicketAsync(ticket);
             return Ok();
         }
