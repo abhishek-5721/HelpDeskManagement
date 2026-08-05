@@ -1,9 +1,13 @@
-﻿namespace HelpDesk.Mvc.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+public enum Priority
 {
-    public enum Priority
-    {
-        Low,
-        Medium,
-        High
-    }
+    [Display(Name = "Low")]
+    Low,
+
+    [Display(Name = "Medium")]
+    Medium,
+
+    [Display(Name = "High")]
+    High
 }

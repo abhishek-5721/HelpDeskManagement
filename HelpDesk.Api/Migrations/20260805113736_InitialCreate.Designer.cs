@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDesk.Api.Migrations
 {
     [DbContext(typeof(TicketDbContext))]
-    [Migration("20260803095125_IntialCreate")]
-    partial class IntialCreate
+    [Migration("20260805113736_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

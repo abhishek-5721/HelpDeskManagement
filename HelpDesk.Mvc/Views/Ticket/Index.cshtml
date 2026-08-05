@@ -1,0 +1,85 @@
+﻿@model IEnumerable<HelpDesk.Mvc.Models.Ticket>
+
+@{
+    ViewData["Title"] = "All Tickets";
+}
+
+<h2 class="text-primary">All Tickets</h2>
+
+<hr />
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+        Raise New Ticket
+    </a>
+</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped table-hover">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Raised By</th>
+                <th>Created Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var ticket in Model)
+            {
+                <tr>
+
+                    <td>@ticket.Id</td>
+
+                    <td>@ticket.Title</td>
+
+                    <td>@ticket.Priority</td>
+
+                    <td>@ticket.Status</td>
+
+                    <td>@ticket.RaisedBy</td>
+
+                    <td>@ticket.CreatedDate.ToString("dd-MMM-yyyy")</td>
+
+                    <td>
+
+                        <a asp-action="Details"
+                           asp-route-id="@ticket.Id"
+                           class="btn btn-info btn-sm">
+                            Details
+                        </a>
+
+                        <a asp-action="Edit"
+                           asp-route-id="@ticket.Id"
+                           class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@ticket.Id"
+                           class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No tickets found.
+    </div>
+}

@@ -1,14 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HelpDesk.Mvc.Models
+public enum Status
 {
-    public enum Status
-    {
-        Open,
+    [Display(Name = "Open")]
+    Open,
 
-        [Display(Name = "In Progress")]
-        In_Progress,
+    [Display(Name = "In Progress")]
+    InProgress,
 
-        Class
-    }
+    [Display(Name = "Closed")]
+    Closed
 }
