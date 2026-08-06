@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2 class="text-primary">Dashboard</h2>
+
+<hr />
+
+<div class="row">
+
+    <div class="col-md-3">
+
+        <div class="card text-center">
+
+            <div class="card-header bg-primary text-white">
+                Total Tickets
+            </div>
+
+            <div class="card-body">
+
+                <h2>@ViewBag.TotalTickets</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card text-center">
+
+            <div class="card-header bg-success text-white">
+                Open Tickets
+            </div>
+
+            <div class="card-body">
+
+                <h2>@ViewBag.OpenTickets</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card text-center">
+
+            <div class="card-header bg-warning">
+                In Progress
+            </div>
+
+            <div class="card-body">
+
+                <h2>@ViewBag.InProgressTickets</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card text-center">
+
+            <div class="card-header bg-danger text-white">
+                Closed Tickets
+            </div>
+
+            <div class="card-body">
+
+                <h2>@ViewBag.ClosedTickets</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

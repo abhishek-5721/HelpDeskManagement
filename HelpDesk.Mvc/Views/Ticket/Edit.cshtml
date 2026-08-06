@@ -1,19 +1,21 @@
 ﻿@model HelpDesk.Mvc.Models.Ticket
 
 @{
-    ViewData["Title"] = "Raise New Ticket";
+    ViewData["Title"] = "Edit Ticket";
 }
 
-<h2 class="text-primary">Raise New Ticket</h2>
+<h2 class="text-primary">Edit Ticket</h2>
 
 <hr />
 
 <div class="row">
     <div class="col-md-6">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly"
                  class="text-danger">
             </div>
+
+            <input asp-for="Id" type="hidden" />
 
             <div class="mb-3">
                 <label asp-for="Title" class="form-label"></label>
@@ -26,19 +28,31 @@
             <div class="mb-3">
                 <label asp-for="Description" class="form-label"></label>
 
-                <textarea asp-for="Description" class="form-control" rows="4">
-                </textarea>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
 
                 <span asp-validation-for="Description" class="text-danger"></span>
 
             </div>
-            
+
             <div class="mb-3">
                 <label asp-for="Priority" class="form-label"></label>
 
                 <select asp-for="Priority" asp-items="Html.GetEnumSelectList<Priority>()" class="form-select"></select>
 
                 <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Status"
+                       class="form-label"></label>
+
+                <select asp-for="Status"
+                        asp-items="Html.GetEnumSelectList<Status>()"
+                        class="form-select">
+                </select>
+
+                <span asp-validation-for="Status"
+                      class="text-danger"></span>
             </div>
 
             <div class="mb-3">
@@ -49,8 +63,10 @@
                 <span asp-validation-for="RaisedBy" class="text-danger"></span>
             </div>
 
+            <input asp-for="CreatedDate" type="hidden" />
+
             <div class="mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
 
                 <a asp-action="Index" class="btn btn-secondary">
                     Cancel
